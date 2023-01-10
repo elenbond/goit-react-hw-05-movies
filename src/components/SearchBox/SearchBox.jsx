@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import PropTypes from 'prop-types';
 
 export const SearchBox = ({ onSubmit }) => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (searchQuery === '') {
+        if (searchQuery.trim() === '') {
             toast.warn('Please, enter your search query in the field!');
             return;
         }
@@ -27,4 +28,8 @@ export const SearchBox = ({ onSubmit }) => {
             </form>
         </div>
     )
+}
+
+SearchBox.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
 }

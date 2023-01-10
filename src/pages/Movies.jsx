@@ -29,7 +29,8 @@ export const Movies = () => {
                 console.log(error);
             }
             if (query === null) {
-                return
+                setSearchMovie([]);
+                return;
             };
             if (!query) {
                 return;
@@ -38,7 +39,7 @@ export const Movies = () => {
         fetchSearchedMovies()
     }, [query])
 
-    const onChange = searchQuery => {
+    const onChange = (searchQuery) => {
         const newQueryChange = (searchQuery !== '' ? { query: searchQuery } : {});
         setSearchParams(newQueryChange);
         setSearchMovie([]);
@@ -46,7 +47,7 @@ export const Movies = () => {
 
     return (
         <main>
-            <SearchBox  onSubmit={onChange} />
+            <SearchBox onSubmit={onChange} />
             {searchMovie.length > 0 && <MoviesList movies={searchMovie} />}
             {status === 'pending' && <Loader />}
         </main>
