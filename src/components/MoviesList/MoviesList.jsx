@@ -18,4 +18,5 @@ export const MoviesList = ({movies, path = ''}) => {
 
 MoviesList.propTypes = {
     movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    path: PropTypes.string,
 }

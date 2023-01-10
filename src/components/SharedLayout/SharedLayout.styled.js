@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-    max-width: 1440px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
 `;
@@ -13,7 +13,7 @@ export const Header = styled.header`
   justify-content: space-between;
   gap: 12px;
   padding: 15px 0;
-  margin-bottom: 16px;
+  margin-bottom: 15px;
   border-bottom: 1px solid black;
   box-shadow-bottom: 1px
 
@@ -22,8 +22,10 @@ export const Header = styled.header`
   }
 `;
 export const Link = styled(NavLink)`
-  padding: 8px 16px;
-  border-radius: 4px;
+  display: inline-flex;
+  padding: 15px;
+  margin-right: 10px;
+  border-radius: 8px;
   text-decoration: none;
   color: black;
   font-weight: 500;
@@ -35,5 +37,8 @@ export const Link = styled(NavLink)`
   &:hover {
     color: white;
     background-color: black;
+  }
+  :last-child {
+    margin-right: 0;
   }
 `;

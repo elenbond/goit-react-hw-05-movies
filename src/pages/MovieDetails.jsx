@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation, Link, Outlet } from "react-router-dom";
+import { useParams, useLocation, Outlet } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { getMovieById } from 'services/API';
 import { Loader } from "components/Loader/Loader";
+import { Container, MovieThumb, BackLink, DescrThumb, InfoThumb, InfoList, InfoItem, InfoLink } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
     const [movieDetails, setmovieDetails] = useState([]);
@@ -37,13 +38,13 @@ export const MovieDetails = () => {
 
     return (
         <main>
-            <Link to={location?.state?.from || '/'}>Go back</Link>
+            <BackLink to={location?.state?.from || '/'}>Go back</BackLink>
             {movieDetails && (
                 <>
-                    <div>
-                        <div>
-                            <img src={`${IMG_URL}${poster_path}`} alt={title} width={400} />
-                            <div>
+                    <Container>
+                        <MovieThumb>
+                            <img src={`${IMG_URL}${poster_path}`} alt={title} width={300} />
+                            <DescrThumb>
                                 <h2>{title} ({release_date})</h2>
                                 <p>User score: {vote_average}/10</p>
                                 <h3>Overview</h3>
@@ -52,20 +53,20 @@ export const MovieDetails = () => {
                                     {genres && (genres.map(genre => (
                                         <span key={genre.id}>{ genre.name } </span >
                                     )))}
-                            </div>
-                        </div>
-                        <div>
+                            </DescrThumb>
+                        </MovieThumb>
+                        <InfoThumb>
                             <h3>Additional information</h3>
-                            <ul>
-                                <li>
-                                    <Link to='cast'>Cast</Link>
-                                </li>
-                                <li>
-                                    <Link to='reviews'>Reviews</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                            <InfoList>
+                                <InfoItem>
+                                    <InfoLink to='cast'>Cast</InfoLink>
+                                </InfoItem>
+                                <InfoItem>
+                                    <InfoLink to='reviews'>Reviews</InfoLink>
+                                </InfoItem>
+                            </InfoList>
+                        </InfoThumb>
+                    </Container>
                 </>
             )}
             {status === 'pending' && <Loader />}
