@@ -10,10 +10,14 @@ export const getTrendingMovies = async () => {
     return response;
 }
 
-export const searchMovie = () => {}
+export const searchMovies = async (searchQuery) => {
+    const response = await axios.get(`search/movie?query=${searchQuery}&api_key=${API_KEY}`);
+    console.log(response.data);
+    return response;
+}
 
-export const getMovieById = async (id) => { 
-    const response = await axios.get(`movie/${id}?api_key=${API_KEY}`);
+export const getMovieById = async (movieId) => { 
+    const response = await axios.get(`movie/${movieId}?api_key=${API_KEY}`);
     console.log(response.data);
     return response;
 }

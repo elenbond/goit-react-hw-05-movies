@@ -16,6 +16,7 @@ export const Cast = () => {
                 if (data.length === 0) {
                     return;
                 }
+                
                 setMovieCredits(data.cast);
             } catch (error) {
                 console.log(error);

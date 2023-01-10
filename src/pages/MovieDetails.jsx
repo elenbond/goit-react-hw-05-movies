@@ -19,12 +19,12 @@ export const MovieDetails = () => {
                 setStatus('pending');
                 const { data } = await getMovieById(movieId);
 
-                console.log(data);
                 if (data.length === 0) {
                     setStatus('rejected');
                     toast.error('Ooop`s, something went wrong. Please, try again!');
                     return;
                 }
+
                 setStatus('resolved');
                 setmovieDetails(data);
             } catch (error) {
@@ -37,20 +37,22 @@ export const MovieDetails = () => {
 
     return (
         <main>
-            <Link to={location?.state?.from || ''}>Go back</Link>
+            <Link to={location?.state?.from || '/'}>Go back</Link>
             {movieDetails && (
                 <>
                     <div>
-                        <img src={`${IMG_URL}${poster_path}`} alt={title} width={400} />
                         <div>
-                            <h2>{title} ({release_date})</h2>
-                            <p>User score: {vote_average}/10</p>
-                            <h3>Overview</h3>
-                            <p>{overview}</p>
-                            <h3>Genres</h3>
-                                {genres && (genres.map(genre => (
-                                    <span key={genre.id}>{ genre.name } </span >
-                                )))}
+                            <img src={`${IMG_URL}${poster_path}`} alt={title} width={400} />
+                            <div>
+                                <h2>{title} ({release_date})</h2>
+                                <p>User score: {vote_average}/10</p>
+                                <h3>Overview</h3>
+                                <p>{overview}</p>
+                                <h3>Genres</h3>
+                                    {genres && (genres.map(genre => (
+                                        <span key={genre.id}>{ genre.name } </span >
+                                    )))}
+                            </div>
                         </div>
                         <div>
                             <h3>Additional information</h3>

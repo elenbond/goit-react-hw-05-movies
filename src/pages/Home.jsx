@@ -14,7 +14,6 @@ export const Home = () => {
             try { 
                 setStatus('pending');
                 const { data } = await getTrendingMovies();
-                console.log(data.results.length);
                 if (data.length !== 0) {
                     setStatus('resolved');
                     setTrendingMovies(data.results);
@@ -25,8 +24,6 @@ export const Home = () => {
                     toast.error('Ooop`s, something went wrong. Please, try again!');
                     return;
                 }
-                // setStatus('resolved');
-                // setTrendingMovies(data.results);
             } catch (error) {
                 console.log(error);
                 setStatus('rejected');

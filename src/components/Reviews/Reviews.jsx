@@ -9,7 +9,7 @@ export const Reviews = () => {
     useEffect(() => {
         const fetchMovieReviews = async () => {
             try {
-                const { data } = getMovieReviews(movieId);
+                const { data } = await getMovieReviews(movieId);
                 setMovieReviews(data.results);
             } catch (error) {
                 console.log(error);
@@ -20,7 +20,7 @@ export const Reviews = () => {
 
     return (
         <div>
-            {movieReviews.length !== 0 ? (
+            {movieReviews.length > 0 ? (
                 <ul>
                     {movieReviews.map(({ id, author, content }) => (
                         <li key={id}>
