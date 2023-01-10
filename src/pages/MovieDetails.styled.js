@@ -17,10 +17,13 @@ export const Container = styled.div`
     max-width: 1200px;
     margin: 0 auto;
     // padding: 0 15px;
+    border-bottom: 1px solid black;
 `;
 export const MovieThumb = styled.div`
     display: flex;
+    padding-bottom: 15px;
     margin-bottom: 15px;
+    border-bottom: 1px solid black;
 `;
 export const DescrThumb = styled.div`
     display: inline-block;
@@ -29,6 +32,7 @@ export const DescrThumb = styled.div`
 export const InfoThumb = styled.div`
     display: flex;
     flex-direction: column;
+    padding-bottom: 15px;
 `;
 export const InfoList = styled.ul`
     display: flex;
