@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieCredits } from 'services/API';
+import { Container, CastItem, InfoThumb } from './Cast.styled'
 
 export const Cast = () => {
     const [movieCredits, setMovieCredits] = useState([]);
@@ -26,16 +27,21 @@ export const Cast = () => {
     }, [movieId]);
 
     return (
-        <ul>
-            {movieCredits.map(({ id, name, character, profile_path }) => (
-                <li key={id}>
-                    <div>
-                        <img src={profile_path ? `${IMG_URL}${profile_path}` : BASE_IMG_URL} alt={name} width={100} />
-                    </div>
-                    <p>{name}</p>
-                    <p>Character: {character}</p>
-                </li>
-            ))}
-        </ul>
+        <Container>
+            {movieCredits.length > 0 ? (
+                <ul>
+                    {movieCredits.map(({ id, name, character, profile_path }) => (
+                        <CastItem key={id}>
+                            <img src={profile_path ? `${IMG_URL}${profile_path}` : BASE_IMG_URL} alt={name} width={100} />
+                            <InfoThumb>
+                                <p>{name}</p>
+                                <p>Character: {character}</p>
+                            </InfoThumb>
+                        </CastItem>
+                    ))}
+                </ul>
+                ) : <p>Sorry, we do not have any credits for this film 😢</p>
+            }
+        </Container>
     );
 }

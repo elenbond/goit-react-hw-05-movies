@@ -18,6 +18,7 @@ export const Container = styled.div`
     margin: 0 auto;
     // padding: 0 15px;
     border-bottom: 1px solid black;
+    margin-bottom: 15px;
 `;
 export const MovieThumb = styled.div`
     display: flex;
