@@ -70,7 +70,9 @@ export const MovieDetails = () => {
                 </>
             )}
             {status === 'pending' && <Loader />}
-            <Outlet />
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
+                <Outlet />
+            {/* </Suspense> */}
         </main>
     )
 }
